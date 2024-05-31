@@ -5,14 +5,14 @@ it converts to /something
 
 # first take an input of ip make a list out of it and convert to integers
 
-subnet = input('enter a subnet: ').split('.')
+###ip1 = input('enter a subnet: ').split('.')
 
 # function that turns the list objects to integers then runs a check and
-# to what class this subnet-mask belongs
+# to what class this ip belongs
 
 
 def check_subnet_class(s):
-    ip = [int(item) for item in subnet]
+    ip = [int(item) for item in s]
     if -1 < ip[0] < 127:
         return 'it is A class'
     elif 127 < ip[0] < 192:
@@ -27,7 +27,7 @@ def check_subnet_class(s):
         return 'incorrect Entry'
 
 
-# function that takes and subnet dotted notation and returns CIDR notation
+# function that takes and subnet dotted notation and returns CIDR slash notation
 
 def convert_to_slash_notation(s):
     subnetmask = [int(item) for item in s]
@@ -45,5 +45,12 @@ def convert_to_slash_notation(s):
     return subnet_slash_notation
 
 
-print(convert_to_slash_notation(subnet))
-print(check_subnet_class(subnet))
+def check_ip_input():
+    ip = input('IP: ').split('.')
+    for item in ip:
+        if item.isnumeric():
+            pass
+        else:
+            print('invalid entry,please us example 10.10.10.10')
+            break
+
